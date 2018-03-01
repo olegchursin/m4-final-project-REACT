@@ -5,6 +5,7 @@ import api from './api/adapter'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Main from './components/Main'
+import BeersContainer from './components/'
 
 class App extends Component {
 
@@ -30,9 +31,9 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path="/" component={Main} />
-          {/* <Route exact path="/beers" render={BeersContainer} />
+          <Route exact path="/beers" render={BeersContainer} />
           <Route exact path="/breweries" render={BreweriesContainer} />
-          <Route exact path="/reviews" render={ReviewsContainer} /> */}
+          <Route exact path="/reviews" render={ReviewsContainer} />
           <Footer />
         </div>
       </Router>
