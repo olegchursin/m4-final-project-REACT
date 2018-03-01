@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Beer = (props) => {
+const BeerCard = (props) => {
   let beer = props.beer
   return (
     <div className="ui link cards">
@@ -34,4 +34,4 @@ const Beer = (props) => {
   )
 }
 
-export default Beer
+export default BeerCard
