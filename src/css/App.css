@@ -7,7 +7,11 @@
   left:0px;
   bottom:0px;
   width:100%;
-  padding: 40px 0 20px 0
+  padding: 20px 0
+}
+
+.ui.centered.image.footer-img {
+  width: 100px;
 }
 
 .ui.menu .item img.logo {

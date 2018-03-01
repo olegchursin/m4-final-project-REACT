@@ -7,10 +7,17 @@ import Main from './components/Main'
 
 class App extends Component {
 
+  state = {
+    beers: [],
+    breweries: [],
+    reviews: []
+  }
+
   componentDidMount() {
     api.getAllBeers()
-      .then(console.log)
+      .then((beers) => )
   }
+
 
   render() {
     return (
