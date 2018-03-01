@@ -20,7 +20,6 @@ class App extends Component {
 
       api.getAllBreweries()
       .then(res => this.setState({breweries: res}))
-
   }
 
 
