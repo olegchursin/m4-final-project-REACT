@@ -17,7 +17,8 @@ class App extends Component {
   state = {
     beers: [],
     breweries: [],
-    reviews: []
+    reviews: [],
+    selectedBeer: null
   }
 
   componentDidMount() {
@@ -43,6 +44,11 @@ class App extends Component {
           <Route exact path="/breweries" component={BreweriesContainer} />
           <Route exact path="/reviews" component={ReviewsContainer} />
           <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/beers/:id" render={() => {
+            return (
+              <BeerPage />
+            )
+          }}
           <Footer />
         </div>
       </Router>
