@@ -1,16 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const NavBar = (props) => {
   return (
     <div className="ui top fixed menu">
       <div className="item">
-        <img className="nav-logo" src="../img/logo.svg" alt="logo"/>
+        <NavLink to="/" exact><img className="nav-logo" src="../img/logo.svg" alt="logo"/></NavLink>
       </div>
-      <a className="item">Beers</a>
-      <a className="item">Breweries</a>
-      <a className="item">Reviews</a>
+      <NavLink to="/beers" exact className="item">Beers</NavLink>
+      <NavLink to="/breweries" exact className="item">Breweries</NavLink>
+      <NavLink to="/reviews" exact className="item">Reviews</NavLink>
       <div className="right menu">
-        <a className="item">Sign In</a>
+        <NavLink to="/login" exact className="item">Log In</NavLink>
       </div>
     </div>
   )

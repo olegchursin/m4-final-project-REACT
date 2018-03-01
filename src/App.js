@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './css/App.css';
 import api from './api/adapter'
 import NavBar from './components/NavBar'
@@ -25,11 +26,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar />
-        <Main />
-        <Footer />
-      </div>
+      <Router>
+        <div>
+          <NavBar />
+          <Route exact path="/" component={Main} />
+          {/* <Route exact path="/beers" render={BeersContainer} />
+          <Route exact path="/breweries" render={BreweriesContainer} />
+          <Route exact path="/reviews" render={ReviewsContainer} /> */}
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
