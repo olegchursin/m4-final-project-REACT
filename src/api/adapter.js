@@ -5,21 +5,16 @@ const api = {
   },
 
   postNewBeer: (beer) => {
-    return fetch('')
+    return fetch('http://localhost:3000/beers')
   },
 
   updateBeer: (id) => {
     return fetch('')
   },
 
-  
-
   getAllBreweries: () => {
-    return fetch('')
-  },
-
-  getOneBrewery: () => {
-    return fetch('')
+    return fetch('http://localhost:3000/breweries')
+      .then(res => res.json())
   },
 
   getAllReviews: () => {
