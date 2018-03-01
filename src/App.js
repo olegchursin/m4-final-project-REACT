@@ -15,7 +15,11 @@ class App extends Component {
 
   componentDidMount() {
     api.getAllBeers()
-      .then((beers) => )
+      .then(res => this.setState({beers: res}))
+
+      api.getAllBreweries()
+      .then(res => this.setState({breweries: res}))
+
   }
 
 
