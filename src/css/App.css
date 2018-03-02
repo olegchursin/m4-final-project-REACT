@@ -35,6 +35,14 @@
   margin-top: 7em;
 }
 
+.ui.text.container {
+  max-width: 960px!important;
+}
+
+.ui.card:first-child {
+  margin-top: 1em;
+}
+
 .wireframe {
   margin-top: 2em;
 }

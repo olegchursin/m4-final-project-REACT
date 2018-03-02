@@ -16,15 +16,12 @@ import BeerPage from './components/beer/BeerPage'
 class App extends Component {
 
   state = {
-    beers: [],
     breweries: [],
     reviews: [],
     selectedBeer: null
   }
 
   componentDidMount() {
-    api.getAllBeers()
-      .then(res => this.setState({beers: res}))
 
     api.getAllBreweries()
     .then(res => this.setState({breweries: res}))
@@ -44,7 +41,7 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer beers={this.state.beers}/>
+              <BeersContainer />
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />
