@@ -1,0 +1,21 @@
+GET http://localhost:3000/beers
+
+###
+
+POST http://localhost:3000/beers
+
+content-type: application/json
+
+{   "beer" : {
+      "name": "Alter Ego",
+      "brewery": {
+        "id": 5,
+        "name": "Tree House Brewing Company",
+        "location": "Charlton, MA",
+        "url": null
+      },
+      "style": "IPA",
+      "img_url": null,
+      "description": null
+  }
+}

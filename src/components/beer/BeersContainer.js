@@ -1,5 +1,6 @@
 import React from 'react'
 import BeersList from './BeersList'
+import BeerControls from './BeerControls'
 
 class BeersContainer extends React.Component {
   state = {
@@ -9,7 +10,7 @@ class BeersContainer extends React.Component {
   render () {
     return (
       <div className="ui text container main-section">
-        <h1>Beers</h1>
+        <BeerControls />
         <BeersList beers={this.props.beers}/>
       </div>
     )

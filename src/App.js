@@ -11,6 +11,7 @@ import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'
 import LoginContainer from './components/login/LoginContainer'
+import BeerPage from './components/beer/BeerPage'
 
 class App extends Component {
 
@@ -36,6 +37,11 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path="/" component={Main} />
+          <Route   path="/beers/:id" render={() => {
+            return (
+              <BeerPage beer={this.state.selectedBeer}/>
+            )
+          }} />
           <Route exact path="/beers" render={() => {
             return (
               <BeersContainer beers={this.state.beers}/>
@@ -44,11 +50,6 @@ class App extends Component {
           <Route exact path="/breweries" component={BreweriesContainer} />
           <Route exact path="/reviews" component={ReviewsContainer} />
           <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/beers/:id" render={() => {
-            return (
-              <BeerPage />
-            )
-          }}
           <Footer />
         </div>
       </Router>

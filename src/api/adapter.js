@@ -5,7 +5,14 @@ const api = {
   },
 
   postNewBeer: (beer) => {
-    return fetch('http://localhost:3000/beers')
+    return fetch('http://localhost:3000/beers', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(beer)
+    }).then(res => res.json())
   },
 
   updateBeer: (id) => {
