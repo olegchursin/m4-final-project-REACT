@@ -37,6 +37,7 @@
 
 .ui.text.container {
   max-width: 960px!important;
+  margin-bottom: 5em;
 }
 
 .ui.card:first-child {
@@ -49,4 +50,11 @@
 
 .wireframe {
   margin-top: 2em;
+}
+
+.ui.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
