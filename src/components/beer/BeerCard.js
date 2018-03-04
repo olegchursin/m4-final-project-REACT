@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Image } from 'semantic-ui-react'
 
 const BeerCard = (props) => {
   let beer = props.beer
@@ -9,7 +9,7 @@ const BeerCard = (props) => {
       <Image src={beer.url ? beer.url : '../../../img/logo.png' } alt={beer.name} />
       <Card.Content>
         <Card.Header>{beer.name}</Card.Header>
-        <Card.Meta><NavLink to="/">{beer.brewery.name}</NavLink></Card.Meta>
+        <Card.Meta><Link to={`/breweries/${beer.brewery.id}`}>{beer.brewery.name}</Link></Card.Meta>
         <Card.Description>
         <h4>{beer.abv}% ABV <strong>{beer.style}</strong></h4>
           {beer.description}

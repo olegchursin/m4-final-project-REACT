@@ -34,7 +34,7 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path="/" component={Main} />
-          <Route   path="/beers/:id" render={() => {
+          <Route path="/beers/:id" render={() => {
             return (
               <BeerPage beer={this.state.selectedBeer}/>
             )

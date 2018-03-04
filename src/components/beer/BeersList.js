@@ -11,7 +11,6 @@ const BeersList = (props) => {
       })}
     </div>
   )
-  return 
 }
 
 export default BeersList

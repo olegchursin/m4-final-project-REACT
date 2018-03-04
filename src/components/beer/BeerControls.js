@@ -16,7 +16,7 @@ const BeerControls = (props) => {
           <Button fluid onClick={props.showNewBeerForm}>Add New Beer</Button>
           <Form.Input fluid label='Filter By Name:' value={props.nameQuery} onChange={props.handleNameChange}/>
           <Form.Input fluid label='Filter By Brewery:' value={props.breweryQuery} onChange={props.handleBreweryChange}/>
-          <Form.Select fluid label=' ' options={options} placeholder='Sort By:' onChange={(e, {value}) => {props.handleSortChange(e, value)}}/>
+          <Form.Select fluid label='Sort By:' options={options} onChange={(e, {value}) => {props.handleSortChange(e, value)}}/>
         </Form.Group>
 
       </Form>
