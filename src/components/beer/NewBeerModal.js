@@ -28,7 +28,7 @@ class NewBeerModal extends React.Component {
   componentDidMount() {
     this.makeBreweriesList()
   }
-      
+
 
   handleOpen = () => this.setState({ modalOpen: true })
 
@@ -94,12 +94,16 @@ class NewBeerModal extends React.Component {
         onClose={this.handleClose}
         closeOnDimmerClick={false}
       >
-        <Modal.Header>Add a New Beer<Button onClick={this.handleClose}>Close</Button></Modal.Header>
+        <Modal.Header>Add a New Beer</Modal.Header>
         <Modal.Content>
           <Form>
             <Form.Group widths='equal'>
               <Form.Input fluid label='Name:' value={this.state.name} onChange={(event, {value}) => {this.handleNameChange(value)}}/>
               <Form.Select fluid label='Brewery:' options={this.state.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />
+              <Form.Select fluid label='Style:' options={styles} onChange={(e, { value }) => {this.handleStyleChange(e, value)}}/>
               <ReactFilestack
                 apikey={apikey}
                 buttonText="Upload image"
@@ -109,11 +113,7 @@ class NewBeerModal extends React.Component {
                 onError={this.onError}
               />
             </Form.Group>
-            <Form.Group widths='equal'>
-              <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />
-              <Form.Select fluid label='Style:' options={styles} onChange={(e, { value }) => {this.handleStyleChange(e, value)}}/>
-            </Form.Group>
-            <Form.Button onClick={this.saveBeer}>Save</Form.Button>
+            <Button onClick={this.saveBeer}>Save</Button><Button onClick={this.handleClose}>Cancel</Button>
           </Form>
         </Modal.Content>
       </Modal>
