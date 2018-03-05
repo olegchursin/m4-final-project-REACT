@@ -47,7 +47,6 @@ class BeersContainer extends React.Component {
   }
 
   handleSortChange = (event, value) => {
-    console.log(value)
     this.setState({sort: value})
   }
 
