@@ -55,8 +55,9 @@ class NewBeerModal extends React.Component {
         trigger={<Button fluid onClick={this.handleOpen}>Add New Beer</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
+        closeOnDimmerClick={false}
       >
-        <Modal.Header>Add a New Beer</Modal.Header>
+        <Modal.Header>Add a New Beer<Button onClick={this.handleClose}>Close</Button></Modal.Header>
         <Modal.Content>
           <Form>
             <Form.Group widths='equal'>
