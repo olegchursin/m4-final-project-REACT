@@ -10,7 +10,7 @@ import Main from './components/Main'
 import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'
-import LoginContainer from './components/login/LoginContainer'
+import AuthAction from './components/AuthAction'
 import BeerPage from './components/beer/BeerPage'
 
 class App extends Component {
@@ -18,13 +18,51 @@ class App extends Component {
   state = {
     breweries: [],
     reviews: [],
-    selectedBeer: null
+    selectedBeer: null,
+    auth: {
+      loggedIn: false
+    }
   }
 
   componentDidMount() {
-
     api.getAllBreweries()
     .then(res => this.setState({breweries: res}))
+
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.setState({
+        auth: {
+          loggedIn: true,
+          token: token
+        }
+      })
+    }
+  }
+
+  login = (email, password) => {
+    api.login(email, password).then(j => {
+      if(j.error) {
+        alert(j.error)
+      } else {
+        localStorage.setItem('token', j.token)
+        this.setState({
+          auth: {
+            loggedIn: true,
+            token: j.token
+          }
+        })
+      }
+    })
+  }
+
+  logout = () => {
+    localStorage.removeItem('token')
+    this.setState({
+      auth: {
+        loggedIn: false,
+        token: undefined
+      }
+    })
   }
 
 
@@ -46,7 +84,12 @@ class App extends Component {
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />
           <Route exact path="/reviews" component={ReviewsContainer} />
-          <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/login" render={() => {
+            return (
+              <AuthAction loginFn={this.login} logoutFn={this.logout} auth={this.state.auth} />
+
+            )
+          }} />
           <Footer />
         </div>
       </Router>

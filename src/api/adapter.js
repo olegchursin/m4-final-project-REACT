@@ -1,4 +1,24 @@
+const loginHeaders = () => {
+  return {
+    'Content-Type': 'application/json',
+    'Accepts': 'application/json',
+    token: localStorage.getItem('token')
+  }
+}
+
 const api = {
+
+  login: (email, password) => {
+    return fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: loginHeaders(),
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    }).then(r => r.json())
+  },
+
   getAllBeers: () => {
     return fetch('http://localhost:3000/beers')
       .then(res => res.json())

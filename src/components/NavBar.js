@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import LoginForm from './login/LoginForm'
 
 const NavBar = (props) => {
   return (
@@ -11,7 +12,8 @@ const NavBar = (props) => {
       <NavLink to="/breweries" exact className="item">Breweries</NavLink>
       <NavLink to="/reviews" exact className="item">Reviews</NavLink>
       <div className="right menu">
-        <NavLink to="/login" exact className="item">Log In</NavLink>
+        <LoginForm />
+        {/* <NavLink to="/login" exact className="item">Log In</NavLink> */}
       </div>
     </div>
   )

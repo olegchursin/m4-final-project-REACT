@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Header, Form, Modal } from 'semantic-ui-react'
+import { Button, Form, Modal } from 'semantic-ui-react'
 import ReactFilestack from 'filestack-react';
 
 import styles from './beerStyles'
@@ -51,7 +51,6 @@ class NewBeerModal extends React.Component {
   }
 
   handleStyleChange = (event, value) => {
-    console.log(value)
     this.setState({style: value})
   }
 
