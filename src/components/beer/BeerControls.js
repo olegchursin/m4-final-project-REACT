@@ -14,7 +14,7 @@ const BeerControls = (props) => {
     <div>
       <Form>
         <Form.Group widths='equal'>
-          <NewBeerModal />
+          <NewBeerModal breweries={props.breweries}/>
           <Form.Input fluid label='Filter By Name:' value={props.nameQuery} onChange={props.handleNameChange}/>
           <Form.Input fluid label='Filter By Brewery:' value={props.breweryQuery} onChange={props.handleBreweryChange}/>
           <Form.Select fluid label='Sort By:' options={options} onChange={(e, {value}) => {props.handleSortChange(e, value)}}/>

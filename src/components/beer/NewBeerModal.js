@@ -12,8 +12,23 @@ class NewBeerModal extends React.Component {
     brewery: '',
     abv: '',
     style: '',
-    url: ''
+    url: '',
+    breweriesArray: []
   }
+
+  makeBreweriesList = () => this.setState(
+    {
+      breweriesArray:
+        this.props.breweries.map(brewery => {
+          return { text: brewery.name, value: brewery
+        }
+      })
+    })
+
+  componentDidMount() {
+    this.makeBreweriesList()
+  }
+      
 
   handleOpen = () => this.setState({ modalOpen: true })
 
@@ -46,10 +61,10 @@ class NewBeerModal extends React.Component {
       brewery: this.state.brewery,
       abv: this.state.abv,
       style: this.state.style,
-      url: this.state.url
+      img_url: this.state.url
     }
 
-    api.postNewBeer(beer)
+    api.postNewBeer(beer).then(console.log)
   }
 
   onSuccess = (result) => {
@@ -84,7 +99,7 @@ class NewBeerModal extends React.Component {
           <Form>
             <Form.Group widths='equal'>
               <Form.Input fluid label='Name:' value={this.state.name} onChange={(event, {value}) => {this.handleNameChange(value)}}/>
-              <Form.Input fluid label='Brewery:' value={this.state.brewery} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
+              <Form.Select fluid label='Brewery:' options={this.state.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
               <ReactFilestack
                 apikey={apikey}
                 buttonText="Upload image"
@@ -98,7 +113,7 @@ class NewBeerModal extends React.Component {
               <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />
               <Form.Select fluid label='Style:' options={styles} onChange={(e, { value }) => {this.handleStyleChange(e, value)}}/>
             </Form.Group>
-            <Form.Button>Save</Form.Button>
+            <Form.Button onClick={this.saveBeer}>Save</Form.Button>
           </Form>
         </Modal.Content>
       </Modal>

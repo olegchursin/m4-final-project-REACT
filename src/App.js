@@ -41,7 +41,7 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer />
+              <BeersContainer breweries={this.state.breweries}/>
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />

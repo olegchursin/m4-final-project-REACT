@@ -86,6 +86,7 @@ class BeersContainer extends React.Component {
           breweryQuery={this.state.breweryQuery}
           handleNameChange={this.handleNameChange}
           handleBreweryChange={this.handleBreweryChange}
+          breweries={this.props.breweries}
         />
         <BeersList beers={breweryFilteredBeers}/>
       </div>
