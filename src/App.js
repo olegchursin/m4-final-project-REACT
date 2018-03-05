@@ -25,6 +25,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    api.getAllBeers()
+      .then(res => this.setState({beers: res}))
+
     api.getAllBreweries()
     .then(res => this.setState({breweries: res}))
 
@@ -70,7 +74,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar />
+          <NavBar loginFn={this.login} logoutFn={this.logout} auth={this.state.auth}/>
           <Route exact path="/" component={Main} />
           <Route path="/beers/:id" render={() => {
             return (
@@ -79,17 +83,17 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer breweries={this.state.breweries}/>
+              <BeersContainer beers={this.state.beers} breweries={this.state.breweries}/>
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />
           <Route exact path="/reviews" component={ReviewsContainer} />
-          <Route exact path="/login" render={() => {
+          {/* <Route exact path="/login" render={() => {
             return (
               <AuthAction loginFn={this.login} logoutFn={this.logout} auth={this.state.auth} />
 
             )
-          }} />
+          }} /> */}
           <Footer />
         </div>
       </Router>

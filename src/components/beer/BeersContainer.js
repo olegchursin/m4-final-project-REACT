@@ -59,9 +59,9 @@ class BeersContainer extends React.Component {
   }
 
   sortBeers = (beers) => {
-    const beersToRender = [...this.state.beers]
+    const beersToRender = [...this.props.beers]
     switch(this.state.sort) {
-      case "none": return this.state.beers
+      case "none": return this.props.beers
       case "name": return this.nameSort(beersToRender)
       case "rating": return this.ratingSort(beersToRender)
       case "reviews": return this.reviewsSort(beersToRender)
@@ -70,12 +70,11 @@ class BeersContainer extends React.Component {
   }
 
   componentDidMount() {
-    api.getAllBeers()
-      .then(res => this.setState({beers: res}))
+    
   }
 
   render () {
-    const sortedBeers = this.sortBeers(this.state.beers)
+    const sortedBeers = this.sortBeers(this.props.beers)
     const nameFilteredBeers = this.nameFilter(sortedBeers, this.state.nameQuery)
     const breweryFilteredBeers = this.breweryFilter(nameFilteredBeers, this.state.breweryQuery)
     return (
