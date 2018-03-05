@@ -16,6 +16,7 @@ import BeerPage from './components/beer/BeerPage'
 class App extends Component {
 
   state = {
+    beers: [],
     breweries: [],
     reviews: [],
     selectedBeer: null,

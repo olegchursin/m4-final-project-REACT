@@ -5,7 +5,6 @@ import api from '../../api/adapter'
 
 class BeersContainer extends React.Component {
   state = {
-    beers: [],
     sort: 'none',
     nameQuery: '',
     breweryQuery: ''
@@ -70,7 +69,7 @@ class BeersContainer extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   render () {
