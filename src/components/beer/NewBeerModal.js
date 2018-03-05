@@ -55,6 +55,7 @@ class NewBeerModal extends React.Component {
   }
 
   saveBeer = (state) => {
+    debugger
     const beer = {
       name: this.state.name,
       brewery: this.state.brewery,
@@ -83,7 +84,7 @@ class NewBeerModal extends React.Component {
       accept: 'image/*',
       fromSources: ['local_file_system'],
       maxSize: 1024 * 1024,
-      maxFiles: 3,
+      maxFiles: 1,
     };
 
     return (
