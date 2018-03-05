@@ -68,10 +68,6 @@ class BeersContainer extends React.Component {
     }
   }
 
-  // componentDidMount() {
-    
-  // }
-
   render () {
     const sortedBeers = this.sortBeers(this.props.beers)
     const nameFilteredBeers = this.nameFilter(sortedBeers, this.state.nameQuery)

@@ -41,10 +41,10 @@ class LoginForm extends React.Component {
         <Modal.Header>Login</Modal.Header>
         <Modal.Content>
           <Form onSubmit={(event) => {this.onFormSubmit(event)}}>
-              {/* <Form.Input fluid label='Email:' name="email" value={this.state.email} onChange={({value}) => {this.handleEmailChange(value)}}/>
-              <Form.Input fluid label='Password:' name="password" value={this.state.password} onChange={({value}) => {this.handlePasswordChange(value)}} /> */}
-              <Form.Input fluid label='Email:' name="email" value={this.state.email} onChange={this.onInputChange}/>
-              <Form.Input fluid label='Password:' name="password" value={this.state.password} onChange={this.onInputChange} />
+            {/* <Form.Input fluid label='Email:' name="email" value={this.state.email} onChange={({value}) => {this.handleEmailChange(value)}}/>
+            <Form.Input fluid label='Password:' name="password" value={this.state.password} onChange={({value}) => {this.handlePasswordChange(value)}} /> */}
+            <Form.Input fluid label='Email:' name="email" value={this.state.email} onChange={this.onInputChange}/>
+            <Form.Input fluid label='Password:' type="password" name="password" value={this.state.password} onChange={this.onInputChange} />
             <Form.Button type="submit">Login</Form.Button>
           </Form>
         </Modal.Content>
