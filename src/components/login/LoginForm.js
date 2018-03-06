@@ -31,7 +31,6 @@ class LoginForm extends React.Component {
 
 
   render() {
-    console.log(this.props)
     return (
       <Modal
         trigger={<NavLink to="/login" exact className="item" onClick={this.handleOpen}>Log In</NavLink>}

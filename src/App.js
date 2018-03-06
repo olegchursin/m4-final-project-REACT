@@ -25,13 +25,22 @@ class App extends Component {
     }
   }
 
+  addBeerToList = (beer) => {
+    this.setState(
+      { beers: [beer, ...this.state.beers]}
+    )
+  }
+
   componentDidMount() {
 
     api.getAllBeers()
       .then(res => this.setState({beers: res}))
 
     api.getAllBreweries()
-    .then(res => this.setState({breweries: res}))
+    .then(res => {
+      this.setState({breweries: res})
+      
+    })
 
     const token = localStorage.getItem('token')
     if (token) {
@@ -84,7 +93,7 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer beers={this.state.beers} breweries={this.state.breweries}/>
+              <BeersContainer beers={this.state.beers} breweries={this.state.breweries} addBeerToList={this.addBeerToList}/>
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />
