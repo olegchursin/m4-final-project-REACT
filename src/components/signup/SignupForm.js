@@ -35,12 +35,13 @@ class SignupForm extends React.Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      confirmPassword
+      password_confirmation: this.state.confirmPassword,
       dob: this.state.dob,
       location: this.state.location
     }
 
     api.postUser(user).then(res => {
+      console.log(res)
       this.setState({modalOpen: false})
     })
 

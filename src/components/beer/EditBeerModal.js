@@ -1,18 +1,20 @@
 import React from 'react';
-import { Button, Form, Modal } from 'semantic-ui-react'
+import { Button, Form, Icon, Modal } from 'semantic-ui-react'
 import ReactFilestack from 'filestack-react';
 
 import styles from './beerStyles'
 import api from '../../api/adapter'
 
-class NewBeerModal extends React.Component {
+class EditBeerModal extends React.Component {
   state = {
     modalOpen: false,
-    name: '',
-    breweryID: '',
-    abv: '',
-    style: '',
-    url: ''
+    beerID: this.props.beer.id,
+    name: this.props.beer.name,
+    breweryName: this.props.beer.brewery.name,
+    breweryID: this.props.beer.brewery.id,
+    abv: this.props.beer.abv,
+    style: this.props.beer.style,
+    img_url: this.props.beer.img_url
   }
 
   handleOpen = () => this.setState({ modalOpen: true })
@@ -41,15 +43,16 @@ class NewBeerModal extends React.Component {
 
   saveBeer = (state) => {
     const beer = {
+      id: this.state.beerID,
       name: this.state.name,
       brewery_id: this.state.breweryID,
       abv: this.state.abv,
       style: this.state.style,
-      img_url: this.state.url
+      img_url: this.state.img_url
     }
 
-    api.postNewBeer(beer).then(res => {
-      this.props.addBeerToList(res)
+    api.patchBeer(beer).then(res => {
+      // this.props.addBeerToList(res)
       this.setState({modalOpen: false})
     })
 
@@ -57,7 +60,7 @@ class NewBeerModal extends React.Component {
 
   onSuccess = (result) => {
     this.setState({
-      url: result.filesUploaded[0].url
+      img_url: result.filesUploaded[0].url
     })
   }; // works
 
@@ -76,21 +79,21 @@ class NewBeerModal extends React.Component {
 
     return (
       <Modal
-        trigger={<Button fluid onClick={this.handleOpen}>Add New Beer</Button>}
+        trigger={<Icon name="edit" className="right floated" onClick={this.handleOpen}/>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         closeOnDimmerClick={false}
       >
-        <Modal.Header>Add a New Beer</Modal.Header>
+        <Modal.Header>Edit Beer</Modal.Header>
         <Modal.Content>
           <Form>
             <Form.Group widths='equal'>
               <Form.Input fluid label='Name:' value={this.state.name} onChange={(event, {value}) => {this.handleNameChange(value)}}/>
-              <Form.Select fluid search label='Brewery:' options={this.props.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
+              <Form.Select fluid search label='Brewery:' value={this.state.breweryID} options={this.props.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />
-              <Form.Select fluid search label='Style:' options={styles} onChange={(e, { value }) => {this.handleStyleChange(e, value)}}/>
+              <Form.Select fluid search label='Style:' value={this.state.style} options={styles} onChange={(e, { value }) => {this.handleStyleChange(e, value)}}/>
               <ReactFilestack
                 apikey={apikey}
                 buttonText="Upload image"
@@ -108,4 +111,4 @@ class NewBeerModal extends React.Component {
   }
 }
 
-export default NewBeerModal
+export default EditBeerModal

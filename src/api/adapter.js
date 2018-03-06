@@ -20,13 +20,14 @@ const api = {
   },
 
   postUser: (user) => {
+    console.log(user)
     return fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify({user})
     }).then(res => res.json())
   },
 
@@ -46,8 +47,15 @@ const api = {
     }).then(res => res.json())
   },
 
-  updateBeer: (id) => {
-    return fetch('')
+  patchBeer: (beer) => {
+    return fetch(`http://localhost:3000/beers/${beer.id}`, {
+      method: "PATCH",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(beer)
+    })
   },
 
   getAllBreweries: () => {
