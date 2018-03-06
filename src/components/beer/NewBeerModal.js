@@ -9,26 +9,11 @@ class NewBeerModal extends React.Component {
   state = {
     modalOpen: false,
     name: '',
-    brewery: '',
+    breweryID: '',
     abv: '',
     style: '',
-    url: '',
-    breweriesArray: []
+    url: ''
   }
-
-  makeBreweriesList = () => this.setState(
-    {
-      breweriesArray:
-        this.props.breweries.map(brewery => {
-          return { text: brewery.name, value: brewery
-        }
-      })
-    })
-
-  componentDidMount() {
-    this.makeBreweriesList()
-  }
-
 
   handleOpen = () => this.setState({ modalOpen: true })
 
@@ -43,7 +28,7 @@ class NewBeerModal extends React.Component {
   }
 
   handleBreweryChange = (value) => {
-    this.setState({brewery: value})
+    this.setState({breweryID: value})
   }
 
   handleAbvChange = (value) => {
@@ -55,16 +40,19 @@ class NewBeerModal extends React.Component {
   }
 
   saveBeer = (state) => {
-    debugger
     const beer = {
       name: this.state.name,
-      brewery: this.state.brewery,
+      brewery_id: this.state.breweryID,
       abv: this.state.abv,
       style: this.state.style,
       img_url: this.state.url
     }
 
-    api.postNewBeer(beer).then(console.log)
+    api.postNewBeer(beer).then(res => {
+      this.props.addBeerToList(res)
+      this.setState({modalOpen: false})
+    })
+
   }
 
   onSuccess = (result) => {
@@ -78,7 +66,6 @@ class NewBeerModal extends React.Component {
   };
 
   render() {
-
     const apikey = "Acu94EFL1STGYvkM6a8usz"
     const basicOptions = {
       accept: 'image/*',
@@ -99,7 +86,7 @@ class NewBeerModal extends React.Component {
           <Form>
             <Form.Group widths='equal'>
               <Form.Input fluid label='Name:' value={this.state.name} onChange={(event, {value}) => {this.handleNameChange(value)}}/>
-              <Form.Select fluid label='Brewery:' options={this.state.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
+              <Form.Select fluid label='Brewery:' options={this.props.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />

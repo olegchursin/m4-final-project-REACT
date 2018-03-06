@@ -6,7 +6,7 @@ const BeerCard = (props) => {
   let beer = props.beer
   return (
     <Card>
-      <Image src={beer.url ? beer.url : '../../../img/beer-placeholder.jpg' } alt={beer.name} />
+      <Image src={beer.img_url ? beer.img_url : '../../../img/beer-placeholder.jpg' } alt={beer.name} />
       <Card.Content>
         <Card.Header>{beer.name}</Card.Header>
         <Card.Meta><Link to={`/breweries/${beer.brewery.id}`}>{beer.brewery.name}</Link></Card.Meta>

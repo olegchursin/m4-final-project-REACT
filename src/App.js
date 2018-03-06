@@ -10,7 +10,6 @@ import Hero from './components/hero/Hero'
 import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'
-import AuthAction from './components/AuthAction'
 import BeerPage from './components/beer/BeerPage'
 
 class App extends Component {
@@ -18,6 +17,7 @@ class App extends Component {
   state = {
     beers: [],
     breweries: [],
+    breweriesArray: [],
     reviews: [],
     selectedBeer: null,
     auth: {
@@ -25,13 +25,29 @@ class App extends Component {
     }
   }
 
+  addBeerToList = (beer) => {
+    this.setState(
+      { beers: [beer, ...this.state.beers]}
+    )
+  }
+
+  makeBreweriesList = () => this.setState({
+    breweriesArray:
+      this.state.breweries.map(brewery => {
+        return { text: brewery.name, value: brewery.id }
+    })
+  })
+
   componentDidMount() {
 
     api.getAllBeers()
       .then(res => this.setState({beers: res}))
 
     api.getAllBreweries()
-    .then(res => this.setState({breweries: res}))
+    .then(res => {
+      this.setState({breweries: res})
+      this.makeBreweriesList()
+    })
 
     const token = localStorage.getItem('token')
     if (token) {
@@ -84,17 +100,11 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer beers={this.state.beers} breweries={this.state.breweries}/>
+              <BeersContainer beers={this.state.beers} breweriesArray={this.state.breweriesArray} addBeerToList={this.addBeerToList}/>
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />
           <Route exact path="/reviews" component={ReviewsContainer} />
-          {/* <Route exact path="/login" render={() => {
-            return (
-              <AuthAction loginFn={this.login} logoutFn={this.logout} auth={this.state.auth} />
-
-            )
-          }} /> */}
           <Footer />
         </div>
       </Router>
