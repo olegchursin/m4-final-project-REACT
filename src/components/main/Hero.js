@@ -10,8 +10,8 @@ class Hero extends React.Component {
 				<h2>Refreshing simplicity of be(er)ing</h2>
 				<p>Goliaths are tumbling, Davids are ascendant, a 200-year-old brewery industry has sextupled its establishments. Enjoy the rebirth of craft beer.</p>
 				<div className="button-wrapper">
-          <Button color='red'>Explore beers</Button>
-          <Button secondary>View breweries</Button>
+          <a href='#main-beers'><Button color='red'>Explore beers</Button></a>
+          <a href='#main-breweries'><Button secondary>View breweries</Button></a>
 				</div>
 			</div>
 		</div>
