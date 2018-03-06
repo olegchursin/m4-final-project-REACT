@@ -13,7 +13,6 @@ const NavBar = (props) => {
       <NavLink to="/reviews" exact className="item">Reviews</NavLink>
       <div className="right menu">
         <AuthAction loginFn={props.loginFn} logoutFn={props.logoutFn} auth={props.auth}/>
-        {/* <NavLink to="/login" exact className="item">Log In</NavLink> */}
       </div>
     </div>
   )

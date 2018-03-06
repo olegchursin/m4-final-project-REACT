@@ -15,18 +15,6 @@ class NewBeerModal extends React.Component {
     url: ''
   }
 
-  // makeBreweriesList = () => this.setState({
-  //   breweriesArray:
-  //     this.props.breweries.map(brewery => {
-  //       return { text: brewery.name, value: brewery.id }
-  //   })
-  // })
-
-  // componentDidMount() {
-  //   this.makeBreweriesList()
-  // }
-
-
   handleOpen = () => this.setState({ modalOpen: true })
 
   handleClose = () => this.setState({ modalOpen: false })

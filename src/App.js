@@ -105,12 +105,6 @@ class App extends Component {
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />
           <Route exact path="/reviews" component={ReviewsContainer} />
-          {/* <Route exact path="/login" render={() => {
-            return (
-              <AuthAction loginFn={this.login} logoutFn={this.logout} auth={this.state.auth} />
-
-            )
-          }} /> */}
           <Footer />
         </div>
       </Router>
