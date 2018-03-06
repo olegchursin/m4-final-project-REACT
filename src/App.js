@@ -6,7 +6,7 @@ import api from './api/adapter'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import Hero from './components/hero/Hero'
+import Hero from './components/main/Hero'
 import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'

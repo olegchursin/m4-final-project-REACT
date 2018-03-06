@@ -108,6 +108,10 @@
   margin-top: 7em;
 }
 
+.main-section {
+  margin-top: 100px;
+}
+
 .ui.text.container {
   max-width: 960px!important;
   margin-bottom: 5em;
