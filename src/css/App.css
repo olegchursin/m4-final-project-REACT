@@ -1,4 +1,6 @@
-/* NAV */
+/* ****************** */
+/* ***** NAVBAR ***** */
+/* ****************** */
 .nav-logo {
   height: 40px;
 }
@@ -7,7 +9,9 @@
   margin-right: 1.5em;
 }
 
-/* FOOTER */
+/* ****************** */
+/* ***** FOOTER ***** */
+/* ****************** */
 .ui.inverted.vertical.footer.segment {
   position: fixed;
   left:0px;
@@ -25,12 +29,81 @@
   padding: 5em 0em;
 }
 
-/* MAIN */
-.main-section {
-  margin-top: 100px;
+/* **************** */
+/* ***** HERO ***** */
+/* **************** */
+.Hero {
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  min-height: 900px;
+}
+.Hero .content {
+  color: #fff;
+  position: relative;
+  z-index: 4;
+  width: 500px;
+  left: 10vw;
+  top: 15vw;
+}
+.Hero .content .logo {
+  max-width: 300px;
+  display: block;
+  position: relative;
+  left: -5px;
+}
+.Hero .content p {
+  width: 100%;
+}
+.Hero .content .button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 400px;
+  margin-top: 30px;
+}
+.Hero .content .button-wrapper .Button:first-child {
+  margin-right: 10px;
 }
 
-/* GENERAL */
+
+.Button {
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 44px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid rgba(245, 245, 241, 0.2);
+  border-radius: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-transition: border .125s ease, background .125s ease;
+  transition: border .125s ease, background .125s ease;
+}
+.Button:hover {
+  border: 2px solid #f5f5f1;
+}
+.Button[data-primary='true'] {
+  border: 2px solid #e50914;
+}
+.Button[data-primary='true']:hover {
+  background: #e50914;
+}
+
+/* ******************* */
+/* ***** GENERAL ***** */
+/* ******************* */
 .main.container {
   margin-top: 7em;
 }

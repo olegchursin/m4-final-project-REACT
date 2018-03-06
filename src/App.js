@@ -6,7 +6,7 @@ import api from './api/adapter'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import Main from './components/Main'
+import Hero from './components/hero/Hero'
 import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'
@@ -76,7 +76,7 @@ class App extends Component {
       <Router>
         <div>
           <NavBar loginFn={this.login} logoutFn={this.logout} auth={this.state.auth}/>
-          <Route exact path="/" component={Main} />
+          <Route exact path="/" component={Hero} />
           <Route path="/beers/:id" render={() => {
             return (
               <BeerPage beer={this.state.selectedBeer}/>
