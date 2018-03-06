@@ -10,7 +10,6 @@ import Main from './components/Main'
 import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'
-import AuthAction from './components/AuthAction'
 import BeerPage from './components/beer/BeerPage'
 
 class App extends Component {
@@ -18,6 +17,7 @@ class App extends Component {
   state = {
     beers: [],
     breweries: [],
+    breweriesArray: [],
     reviews: [],
     selectedBeer: null,
     auth: {
@@ -31,6 +31,13 @@ class App extends Component {
     )
   }
 
+  makeBreweriesList = () => this.setState({
+    breweriesArray:
+      this.state.breweries.map(brewery => {
+        return { text: brewery.name, value: brewery.id }
+    })
+  })
+
   componentDidMount() {
 
     api.getAllBeers()
@@ -39,7 +46,7 @@ class App extends Component {
     api.getAllBreweries()
     .then(res => {
       this.setState({breweries: res})
-      
+      this.makeBreweriesList()
     })
 
     const token = localStorage.getItem('token')
@@ -93,7 +100,7 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer beers={this.state.beers} breweries={this.state.breweries} addBeerToList={this.addBeerToList}/>
+              <BeersContainer beers={this.state.beers} breweriesArray={this.state.breweriesArray} addBeerToList={this.addBeerToList}/>
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />

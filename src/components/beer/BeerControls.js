@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import NewBeerModal from './NewBeerModal'
 
 const options = [
@@ -14,7 +14,7 @@ const BeerControls = (props) => {
     <div>
       <Form>
         <Form.Group widths='equal'>
-          <NewBeerModal breweries={props.breweries} addBeerToList={props.addBeerToList}/>
+          <NewBeerModal breweriesArray={props.breweriesArray} addBeerToList={props.addBeerToList}/>
           <Form.Input fluid label='Filter By Name:' value={props.nameQuery} onChange={props.handleNameChange}/>
           <Form.Input fluid label='Filter By Brewery:' value={props.breweryQuery} onChange={props.handleBreweryChange}/>
           <Form.Select fluid label='Sort By:' options={options} onChange={(e, {value}) => {props.handleSortChange(e, value)}}/>

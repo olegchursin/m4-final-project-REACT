@@ -12,22 +12,19 @@ class NewBeerModal extends React.Component {
     breweryID: '',
     abv: '',
     style: '',
-    url: '',
-    breweriesArray: []
+    url: ''
   }
 
-  makeBreweriesList = () => this.setState(
-    {
-      breweriesArray:
-        this.props.breweries.map(brewery => {
-          return { text: brewery.name, value: brewery.id
-        }
-      })
-    })
+  // makeBreweriesList = () => this.setState({
+  //   breweriesArray:
+  //     this.props.breweries.map(brewery => {
+  //       return { text: brewery.name, value: brewery.id }
+  //   })
+  // })
 
-  componentDidMount() {
-    this.makeBreweriesList()
-  }
+  // componentDidMount() {
+  //   this.makeBreweriesList()
+  // }
 
 
   handleOpen = () => this.setState({ modalOpen: true })
@@ -101,7 +98,7 @@ class NewBeerModal extends React.Component {
           <Form>
             <Form.Group widths='equal'>
               <Form.Input fluid label='Name:' value={this.state.name} onChange={(event, {value}) => {this.handleNameChange(value)}}/>
-              <Form.Select fluid label='Brewery:' options={this.state.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
+              <Form.Select fluid label='Brewery:' options={this.props.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />

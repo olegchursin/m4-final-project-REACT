@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import LoginForm from './login/LoginForm'
 import AuthAction from './AuthAction'
 
 const NavBar = (props) => {

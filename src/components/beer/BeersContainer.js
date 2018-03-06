@@ -1,7 +1,6 @@
 import React from 'react'
 import BeersList from './BeersList'
 import BeerControls from './BeerControls'
-import api from '../../api/adapter'
 
 class BeersContainer extends React.Component {
   state = {
@@ -80,7 +79,7 @@ class BeersContainer extends React.Component {
           breweryQuery={this.state.breweryQuery}
           handleNameChange={this.handleNameChange}
           handleBreweryChange={this.handleBreweryChange}
-          breweries={this.props.breweries}
+          breweriesArray={this.props.breweriesArray}
           addBeerToList={this.props.addBeerToList}
         />
         <BeersList beers={breweryFilteredBeers}/>

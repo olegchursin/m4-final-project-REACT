@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Button, Form, Modal } from 'semantic-ui-react'
+import { Form, Modal } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
   state = {email: '', password: ''}
