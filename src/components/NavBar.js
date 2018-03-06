@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import AuthAction from './AuthAction'
+import SignupForm from './signup/SignupForm'
 
 const NavBar = (props) => {
   return (
@@ -12,6 +13,7 @@ const NavBar = (props) => {
       <NavLink to="/breweries" exact className="item">Breweries</NavLink>
       <NavLink to="/reviews" exact className="item">Reviews</NavLink>
       <div className="right menu">
+        {props.auth.loggedIn ? null : <SignupForm/>}
         <AuthAction loginFn={props.loginFn} logoutFn={props.logoutFn} auth={props.auth}/>
       </div>
     </div>

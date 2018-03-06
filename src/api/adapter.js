@@ -19,6 +19,17 @@ const api = {
     }).then(r => r.json())
   },
 
+  postUser: (user) => {
+    return fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }).then(res => res.json())
+  },
+
   getAllBeers: () => {
     return fetch('http://localhost:3000/beers')
       .then(res => res.json())

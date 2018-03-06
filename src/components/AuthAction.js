@@ -11,7 +11,7 @@ class AuthAction extends React.Component {
 
   render() {
     return this.props.auth.loggedIn ?
-      <NavLink to="/logout" onClick={ this.logoutWrapper }>Logout</NavLink> :
+      <NavLink className="item" to="/logout" onClick={ this.logoutWrapper }>Logout</NavLink> :
       <LoginForm login={ this.props.loginFn } />
     }
 }

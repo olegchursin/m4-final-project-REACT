@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <Modal
-        trigger={<NavLink to="/login" exact className="item" onClick={this.handleOpen}>Log In</NavLink>}
+        trigger={<NavLink to="#" exact className="item" onClick={this.handleOpen}>Log In</NavLink>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >
@@ -41,5 +41,7 @@ class LoginForm extends React.Component {
     )
   }
 }
+
+
 
 export default LoginForm

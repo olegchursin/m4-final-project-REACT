@@ -91,7 +91,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar loginFn={this.login} logoutFn={this.logout} auth={this.state.auth}/>
+          <NavBar
+            loginFn={this.login}
+            logoutFn={this.logout}
+            auth={this.state.auth}
+          />
           <Route exact path="/" component={Hero} />
           <Route path="/beers/:id" render={() => {
             return (
@@ -100,7 +104,12 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer beers={this.state.beers} breweriesArray={this.state.breweriesArray} addBeerToList={this.addBeerToList}/>
+              <BeersContainer
+                beers={this.state.beers}
+                breweriesArray={this.state.breweriesArray}
+                addBeerToList={this.addBeerToList}
+                loggedIn={this.state.auth.loggedIn}
+                />
             )
           }} />
           <Route exact path="/breweries" component={BreweriesContainer} />

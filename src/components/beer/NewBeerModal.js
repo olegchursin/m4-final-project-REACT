@@ -100,7 +100,7 @@ class NewBeerModal extends React.Component {
                 onError={this.onError}
               />
             </Form.Group>
-            <Button onClick={this.saveBeer}>Save</Button><Button onClick={this.handleClose}>Cancel</Button>
+            <Button onClick={this.handleClose}>Cancel</Button><Button floated='right' onClick={this.saveBeer}>Save</Button>
           </Form>
         </Modal.Content>
       </Modal>
