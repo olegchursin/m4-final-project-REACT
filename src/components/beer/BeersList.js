@@ -1,6 +1,5 @@
 import React from 'react'
 import BeerCard from './BeerCard'
-// import { Grid } from 'semantic-ui-react'
 
 const BeersList = (props) => {
   let allBeers = props.beers

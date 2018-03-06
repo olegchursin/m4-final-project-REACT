@@ -6,7 +6,7 @@ import api from './api/adapter'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import Hero from './components/main/Hero'
+import Main from './components/main/Main'
 import BeersContainer from './components/beer/BeersContainer'
 import BreweriesContainer from './components/brewery/BreweriesContainer'
 import ReviewsContainer from './components/review/ReviewsContainer'
@@ -17,7 +17,7 @@ class App extends Component {
   state = {
     beers: [],
     breweries: [],
-    breweriesArray: [],
+    breweriesArray: [], // used in the AddNewBeer dropdown
     reviews: [],
     selectedBeer: null,
     auth: {
@@ -91,12 +91,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar
-            loginFn={this.login}
-            logoutFn={this.logout}
-            auth={this.state.auth}
-          />
-          <Route exact path="/" component={Hero} />
+          <NavBar loginFn={this.login} logoutFn={this.logout} auth={this.state.auth}/>
+          <Route exact path="/" render={() => {
+            return (
+              <Main beers={this.state.beers} breweries={this.state.breweries} />
+            )
+          }} />
           <Route path="/beers/:id" render={() => {
             return (
               <BeerPage beer={this.state.selectedBeer}/>
@@ -112,7 +112,11 @@ class App extends Component {
                 />
             )
           }} />
-          <Route exact path="/breweries" component={BreweriesContainer} />
+          <Route exact path="/breweries" render={() => {
+            return (
+              <BreweriesContainer breweries={this.state.breweries}/>
+            )
+          }} />
           <Route exact path="/reviews" component={ReviewsContainer} />
           <Footer />
         </div>

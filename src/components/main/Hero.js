@@ -14,7 +14,6 @@ class Hero extends React.Component {
           <Button secondary>View breweries</Button>
 				</div>
 			</div>
-			<div className="overlay"></div>
 		</div>
     )
   }
