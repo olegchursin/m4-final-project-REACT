@@ -6,7 +6,7 @@ const BeersList = (props) => {
   return (
     <div className={"ui four column stackable grid container"}>
       {allBeers.map(b => {
-        return <div key={b.id}><BeerCard beer={b} /></div>
+        return <div key={b.id}><BeerCard beer={b} breweriesArray={props.breweriesArray}/></div>
       })}
     </div>
   )

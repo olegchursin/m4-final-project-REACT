@@ -104,7 +104,12 @@ class App extends Component {
           }} />
           <Route exact path="/beers" render={() => {
             return (
-              <BeersContainer beers={this.state.beers} breweriesArray={this.state.breweriesArray} addBeerToList={this.addBeerToList}/>
+              <BeersContainer
+                beers={this.state.beers}
+                breweriesArray={this.state.breweriesArray}
+                addBeerToList={this.addBeerToList}
+                loggedIn={this.state.auth.loggedIn}
+                />
             )
           }} />
           <Route exact path="/breweries" render={() => {

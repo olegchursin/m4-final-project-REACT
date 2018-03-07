@@ -19,6 +19,18 @@ const api = {
     }).then(r => r.json())
   },
 
+  postUser: (user) => {
+    console.log(user)
+    return fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user})
+    }).then(res => res.json())
+  },
+
   getAllBeers: () => {
     return fetch('http://localhost:3000/beers')
       .then(res => res.json())
@@ -35,8 +47,15 @@ const api = {
     }).then(res => res.json())
   },
 
-  updateBeer: (id) => {
-    return fetch('')
+  patchBeer: (beer) => {
+    return fetch(`http://localhost:3000/beers/${beer.id}`, {
+      method: "PATCH",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(beer)
+    })
   },
 
   getAllBreweries: () => {
@@ -45,7 +64,8 @@ const api = {
   },
 
   getAllReviews: () => {
-    return fetch('')
+    return fetch('http://localhost:3000/reviews')
+      .then(res => res.json())
   }
 
 }
