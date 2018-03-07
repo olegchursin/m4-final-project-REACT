@@ -64,7 +64,8 @@ const api = {
   },
 
   getAllReviews: () => {
-    return fetch('')
+    return fetch('http://localhost:3000/reviews')
+      .then(res => res.json())
   }
 
 }

@@ -21,24 +21,10 @@ class EditBeerModal extends React.Component {
 
   handleClose = () => this.setState({ modalOpen: false })
 
-  handleNameChange = (value) => {
-    this.setState({name: value})
-  }
-
-  handleAbvChange = (value) => {
-    this.setState({abv: value})
-  }
-
-  handleBreweryChange = (value) => {
-    this.setState({breweryID: value})
-  }
-
-  handleAbvChange = (value) => {
-    this.setState({abv: value})
-  }
-
-  handleStyleChange = (event, value) => {
-    this.setState({style: value})
+  onInputChange = (e, value) => {
+    this.setState({
+      [e.target.name]: value
+    })
   }
 
   saveBeer = (state) => {
@@ -87,13 +73,13 @@ class EditBeerModal extends React.Component {
         <Modal.Header>Edit Beer</Modal.Header>
         <Modal.Content>
           <Form>
-            <Form.Group widths='equal'>
-              <Form.Input fluid label='Name:' value={this.state.name} onChange={(event, {value}) => {this.handleNameChange(value)}}/>
-              <Form.Select fluid search label='Brewery:' value={this.state.breweryID} options={this.props.breweriesArray} onChange={(event, {value}) => {this.handleBreweryChange(value)}}/>
+          <Form.Group widths='equal'>
+              <Form.Input fluid label='Name:' name="name" value={this.state.name} onChange={(event, {value}) => {this.onInputChange(event, value)}}/>
+              <Form.Select fluid search label='Brewery:' name="breweryID" value={this.state.breweryID} options={this.props.breweriesArray} onChange={(event, {value}) => {this.onInputChange(event, value)}}/>
             </Form.Group>
             <Form.Group widths='equal'>
-              <Form.Input fluid label='ABV:' value={this.state.abv} onChange={(event, {value}) => {this.handleAbvChange(value)}} />
-              <Form.Select fluid search label='Style:' value={this.state.style} options={styles} onChange={(e, { value }) => {this.handleStyleChange(e, value)}}/>
+              <Form.Input fluid label='ABV:' name="abv" value={this.state.abv} onChange={(event, {value}) => {this.onInputChange(event, value)}} />
+              <Form.Select fluid search label='Style:' name="style" value={this.state.style} options={styles} onChange={(event, {value}) => {this.onInputChange(event, value)}}/>
               <ReactFilestack
                 apikey={apikey}
                 buttonText="Upload image"
