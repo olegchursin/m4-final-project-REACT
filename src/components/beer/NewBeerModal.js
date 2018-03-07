@@ -70,6 +70,7 @@ class NewBeerModal extends React.Component {
     const basicOptions = {
       accept: 'image/*',
       fromSources: ['local_file_system'],
+
       maxSize: 1024 * 1024,
       maxFiles: 1,
     };
