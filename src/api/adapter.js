@@ -63,9 +63,42 @@ const api = {
       .then(res => res.json())
   },
 
+  postNewBrewery: (brewery) => {
+    return fetch('http://localhost:3000/breweries', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(brewery)
+    }).then(res => res.json())
+  },
+
+  patchBrewery: (brewery) => {
+    return fetch(`http://localhost:3000/breweries/${brewery.id}`, {
+      method: "PATCH",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(brewery)
+    })
+  },
+
   getAllReviews: () => {
     return fetch('http://localhost:3000/reviews')
       .then(res => res.json())
+  },
+
+  postNewReview: (review) => {
+    return fetch('http://localhost:3000/reviews', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    }).then(res => res.json())
   }
 
 }

@@ -17,17 +17,30 @@ class App extends Component {
   state = {
     beers: [],
     breweries: [],
+    beersArray: [],
     breweriesArray: [], // used in the AddNewBeer dropdown
     reviews: [],
     selectedBeer: null,
     auth: {
-      loggedIn: false
+      loggedIn: false,
     }
   }
 
   addBeerToList = (beer) => {
     this.setState(
       { beers: [beer, ...this.state.beers]}
+    )
+  }
+
+  addBreweryToList = (brewery) => {
+    this.setState(
+      { breweries: [brewery, ...this.state.breweries]}
+    )
+  }
+
+  addReviewToList = (review) => {
+    this.setState(
+      { reviews: [review, ...this.state.reviews]}
     )
   }
 
@@ -38,16 +51,29 @@ class App extends Component {
     })
   })
 
+  makeBeersList = () => this.setState({
+    beersArray:
+      this.state.beers.map(beer => {
+        return { text: beer.name, value: beer.id }
+    })
+  })
+
   componentDidMount() {
 
     api.getAllBeers()
-      .then(res => this.setState({beers: res}))
+      .then(res => {
+        this.setState({beers: res})
+        this.makeBeersList()
+      })
 
     api.getAllBreweries()
-    .then(res => {
-      this.setState({breweries: res})
-      this.makeBreweriesList()
-    })
+      .then(res => {
+        this.setState({breweries: res})
+        this.makeBreweriesList()
+      })
+
+    api.getAllReviews()
+      .then(res => this.setState({reviews: res}))
 
     const token = localStorage.getItem('token')
     if (token) {
@@ -114,10 +140,23 @@ class App extends Component {
           }} />
           <Route exact path="/breweries" render={() => {
             return (
-              <BreweriesContainer breweries={this.state.breweries}/>
+              <BreweriesContainer
+                breweries={this.state.breweries}
+                addBreweryToList={this.addBreweryToList}
+                loggedIn={this.state.auth.loggedIn}
+              />
             )
           }} />
-          <Route exact path="/reviews" component={ReviewsContainer} />
+          <Route exact path="/reviews" render={() => {
+            return (
+              <ReviewsContainer
+                reviews={this.state.reviews}
+                addReviewToList={this.addReviewToList}
+                beersArray={this.state.beersArray}
+                loggedIn={this.state.auth.loggedIn}
+              />
+            )
+          }} />
           <Footer />
         </div>
       </Router>
