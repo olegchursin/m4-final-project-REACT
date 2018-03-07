@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Icon, Image, Modal } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import EditBeerModal from './EditBeerModal'
 
 const BeerCard = (props) => {
