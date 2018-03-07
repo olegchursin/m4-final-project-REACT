@@ -114,6 +114,7 @@ class App extends Component {
           }} />
           <Route exact path="/reviews" component={ReviewsContainer} />
           <Footer />
+
         </div>
       </Router>
     );
